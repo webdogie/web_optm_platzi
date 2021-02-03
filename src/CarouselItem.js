@@ -1,15 +1,18 @@
 import h from 'hyperscript'
-import moment from 'moment'
+import formatDistance from 'date-fns/formatDistance'
+import parseISO from 'date-fns/parseISO'
 
-const relativeDate = dateStr => moment(dateStr, 'YYYY-MM-DD').fromNow()
+const relativeDate = dateStr =>
+  formatDistance(parseISO(dateStr, 'YYYY-MM-DD'), new Date())
 
 const Controls = ({ slug, youtubeVideoId }) =>
   h(
     'div',
     h(
-      'a',
+      'a.js-video-link-yt',
       {
         href: `https://www.youtube.com/watch?v=${youtubeVideoId}`,
+        'data-videoid': youtubeVideoId,
         title: 'Watch trailer',
         target: '_blank',
         rel: 'noreferrer',
@@ -44,7 +47,11 @@ const CarouselItem = ({
 }) =>
   h(
     'div.carousel-item',
-    h('img.carousel-item__img', { src: imageUrl, alt: '' }),
+    h('img.carousel-item__img.lozad', {
+      'data-src': imageUrl,
+      // loading: 'lazy',
+      alt: title,
+    }),
     h(
       'div.carousel-item__details',
       Controls({ slug, youtubeVideoId }),

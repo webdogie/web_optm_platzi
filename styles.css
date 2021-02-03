@@ -2,9 +2,17 @@
  * Home page
  *******************************************
  */
+
+html {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+html.wf-active {
+  font-family: 'Muli', sans-serif;
+}
+
 body {
   margin: 0;
-  font-family: 'Muli', sans-serif;
   background: #21c08b;
   background-image: linear-gradient(#21c08b, #8f57fd);
 }
@@ -99,7 +107,7 @@ ul:hover {
   cursor: pointer;
 }
 
-.header__menu--profile > img {
+.header__menu--profile > svg {
   margin-right: 8px;
   width: 40px;
 }
@@ -188,9 +196,9 @@ footer a {
   position: relative;
   display: inline-block;
   width: 200px;
-  height: 250px;
+  /* height: 250px; */
   margin-right: 10px;
-  font-size: 20px;
+  /* font-size: 20px; */
   cursor: pointer;
   transition: 450ms all;
   transform-origin: center left;
